@@ -1,8 +1,8 @@
 <template>
-  <el-form ref="form" :model="form" label-width="120px">
-    <el-form-item v-for="item in formItem" :key="item.prop" :label="item.label" :prop="item.prop">
-      <el-input v-model="form[item.prop]" v-if="item.type==='Input'" :disabled="item.disabled" :style="{width:item.width}" :placeholder="item.placeholder"></el-input>
-      <el-radio-group v-model="form[item.prop]" v-if="item.type==='Radio'">
+  <el-form  ref="form1" :model="formData" label-width="120px">
+    <el-form-item v-for="item in formItem" :key="item.prop" :label="item.label" :prop="item.prop" :rules="item.rules">
+      <el-input v-model="formData[item.prop]" v-if="item.type==='Input'" :disabled="item.disabled" :style="{width:item.width}" :placeholder="item.placeholder"></el-input>
+      <el-radio-group v-model="formData[item.prop]" v-if="item.type==='Radio'">
        <el-radio v-for="item in item.options" :label="item.value" :key="item.value"></el-radio>
       </el-radio-group>
       <!-- <slot v-if="item.type===Slot" :name="item.slotName"/> -->
@@ -25,6 +25,10 @@ export default {
       formHandler:{
         type:Array,
       default:()=>[]
+      },
+      formData:{
+        type:Object,
+        default:()=>{}
       }
   },
   data(){
@@ -34,19 +38,32 @@ export default {
   },
   methods: {
     initFormData(){
-      const formData={}
+      // const formData={}
       this.formItem.forEach(item=>{
-        if(item.prop){formData[item.prop]=item.value || null}
+        // if(item.prop){formData[item.prop]=item.value || null}
+        // 规则验证
+        if(item.required){this.rules(item)}
+        // 自定义校验规则
+        if(item.validator){item.rules=item.validator}
       })
-      this.form=formData
+      this.form.id='0909'
       //  console.log(formData);
+    },
+    rules(item){
+    const requiredRules=[{required:true,message:item.required_msg||`${this.type_msg[item.type]}${item.label}`,trigger:'change'}]
+    // 其他的规则
+    if(item.rules&&item.rules.length>0){
+      item.rules=requiredRules.concat(item.rules)
+    }else{
+      item.rules=requiredRules
+    }
     }
   },
   watch: {
     formItem:{
       handler(newValue){
         this.initFormData()
-        console.log(newValue);
+        // console.log(newValue);
       },
       immediate:true
     }
