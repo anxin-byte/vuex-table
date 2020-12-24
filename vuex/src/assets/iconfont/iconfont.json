@@ -1,0 +1,30 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "69775205",
+      "name": "笔试",
+      "font_class": "bishi",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "69775206",
+      "name": "操作",
+      "font_class": "caozuo",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "69775207",
+      "name": "查看测评笔试成绩",
+      "font_class": "chakancepingbishichengji",
+      "unicode": "e935",
+      "unicode_decimal": 59701
+    }
+  ]
+}

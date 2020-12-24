@@ -1,6 +1,8 @@
 <template>
   <div class="home">
     <h1>{{$store.state.title}}</h1>
+    <h1><i class="iconfont iconbishi"></i></h1>
+    <h1><i class="iconfont icon-mianxingbingbao"></i></h1>
     <h2>数量：{{$store.state.count}}</h2>
     <h1>当前购物车的数量{{ $store.getters.cartCount }}</h1>
     <button @click="add">加</button>

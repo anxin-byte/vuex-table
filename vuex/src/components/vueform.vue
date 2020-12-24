@@ -5,6 +5,9 @@
       <el-radio-group v-model="formData[item.prop]" v-if="item.type==='Radio'">
        <el-radio v-for="item in item.options" :label="item.value" :key="item.value"></el-radio>
       </el-radio-group>
+    <el-select v-if="item.type==='Select'" v-model="formData[item.prop]" :placeholder="item.placeholder">
+      <el-option v-for="item in item.options" :label="item.value" :key="item.value"  :value="item.value"></el-option>
+    </el-select>
       <!-- <slot v-if="item.type===Slot" :name="item.slotName"/> -->
     </el-form-item>
     <el-form-item>
