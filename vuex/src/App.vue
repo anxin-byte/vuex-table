@@ -21,6 +21,7 @@
                 <!-- <template slot="title">分组一</template> -->
                 <el-menu-item index="1-1"><router-link to="/">首页</router-link></el-menu-item>
                 <el-menu-item index="1-2"><router-link to="/about">相关页面</router-link></el-menu-item>
+                <el-menu-item index="1-2"><router-link to="/table">表格封装</router-link></el-menu-item>
                 <el-menu-item index="1-2"><router-link to="/map">地图页面</router-link></el-menu-item>
               <!-- </el-menu-item-group> -->
               <!-- <el-submenu index="1-4">

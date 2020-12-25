@@ -1,0 +1,13 @@
+{
+  "innerList": [
+		{"parkingName":"上海1","type":"公共场地1","address":"浦东8","carsNumber":"18","status":0},
+    {"parkingName":"上海2","type":"公共场地2","address":"浦东7","carsNumber":"18","status":0},
+		{"parkingName":"上海3","type":"公共场地3","address":"浦东6","carsNumber":"18","status":1},
+		{"parkingName":"上海4","type":"公共场地4","address":"浦东4","carsNumber":"18","status":0},
+		{"parkingName":"上海5","type":"公共场地5","address":"浦东3","carsNumber":"18","status":0},
+		{"parkingName":"上海6","type":"公共场地6","address":"浦东2","carsNumber":"18","status":1},
+		{"parkingName":"上海7","type":"公共场地7","address":"浦东1","carsNumber":"18","status":0},
+		{"parkingName":"上海8","type":"公共场地8","address":"浦东0","carsNumber":"18","status":0}
+	]
+
+}
