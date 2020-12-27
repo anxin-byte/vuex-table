@@ -18,7 +18,7 @@
 <script>
 import vueSelect from './vueSelect.vue';
 export default {
-//  props:['dialogVisible'],
+ props:{flagvisible:{type:Boolean,default:false},messages:{type:Object,default:()=>{}}},
  data() {
       return {
         dialogVisible: false,
@@ -38,30 +38,35 @@ export default {
     },
     created () {
       // 路径打印对此 能跟在create里有关，换成method里面
-      this.eventBus.$on('message',this.message)
+      // this.eventBus.$on('message',this.message())
     },
     mounted () {
+      // this.dialogVisible=this.flagvisible
       // this.eventBus.$on('message',this.message)
     },
     beforeDestroy () {
       // this.eventBus.$off('message')
-       this.offxxxListener();
+      //  this.offxxxListener();
     },
+    // updated () {
+    //   console.log(this.dialogVisible);
+    // },
     methods: {
       
-    offxxxListener: function () {
-    this.eventBus.$off('message')
+    // offxxxListener: function () {
+    // this.eventBus.$off('message')
     // this.$root.Bus.off("事件名");
     // this.$root.Bus.off("事件名");
-    },
+    // },
       message(val){
-      this.dialogVisible=val.dialogVisible
-      this.form_data.route= val.route
-      if(val.test){
-        this.form_data.right=JSON.parse(val.test)
+      // this.dialogVisible=val.dialogVisible
+      console.log(this.messages);
+      this.form_data.route= this.messages.route
+      if(this.messages.test){
+        this.form_data.right=JSON.parse(this.messages.test)
       }
       console.log(this.form_data);
-      console.log(val);
+      // console.log(val);
       },
       submit(){
         // console.log(this.$refs);
@@ -88,6 +93,7 @@ export default {
          return false
        }})
        this.dialogVisible = false
+      //  this.flagvisible=false
        console.log('11');
       },
       handleClose(done) {
@@ -98,15 +104,38 @@ export default {
         //     done();
         //   })
         //   .catch(_ => {});
+      },
+      load(){
+          this.eventBus.$emit('change',{flag:false})
       }
     },
     watch: {
-      dialogVisible(val,los){
-        immediate:true
-        // console.log(val);
-        // console.log(los);
+     flagvisible(newval,oldval){
+        console.log(newval);
+        // this.dialogVisible = newval
+        if(newval){
+        this.dialogVisible = newval
+        this.message()
+         
+        // else {
+        // this.flagvisible=newval
+        // console.log(flagvisible);
+        // this.eventBus.$emit('change',{flag:newval})
+
+        // this.dialogVisible = newval
+        }
+      
+     },
+ 
+     dialogVisible(newl,old){
+          console.log(33333);
+         if(!newl){
+           this.load()
+         }
+        }
+        // this.message()
       }
-    }
+    
 }
 </script>
 

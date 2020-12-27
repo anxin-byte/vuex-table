@@ -43,7 +43,7 @@
         <el-main><router-view/></el-main>
       </el-container>
     </el-container>
-   <dialog1/>
+   <dialog1 :flagvisible.sync="showflagvisible" :messages="messages"/>
   </div>
 </template>
 <script>
@@ -52,24 +52,35 @@ export default{
   data(){
     return{
       route:'',
-      current:true
+      current:true,
+      showflagvisible:false,
+      messages:{}
     }
   },
   components: {
      dialog1
   },
+  created () {
+    this.eventBus.$on('change',this.flag)
+  },
   methods:{
+    flag(val){
+      this.showflagvisible=val.flag
+     console.log(val);
+    },
     open(){
       // this.$route
-      this.route=this.$route.name
-      let message={dialogVisible:true,route:this.route}
-      if(sessionStorage.getItem(this.route)){
-         message.test=sessionStorage.getItem(this.route)
+      // this.route=this.$route.name
+      console.log(11111);
+      let message={dialogVisible:true,route:this.$route.name}
+      if(sessionStorage.getItem(this.$route.name)){
+         message.test=sessionStorage.getItem(this.$route.name)
       }
-      this.eventBus.$emit('message',message)
-      // console.log(open);
-    //  dialogVisible=true
-    //  console.log(this.$route);
+      // this.eventBus.$emit('message',message)
+      this.messages=message
+      console.log(this.showflagvisible);
+      this.showflagvisible=true
+      console.log(this.showflagvisible);
     },
     submit(){
     //  匹配所有路由信息
