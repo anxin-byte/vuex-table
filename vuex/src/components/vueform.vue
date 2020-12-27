@@ -9,7 +9,7 @@
     <el-select v-if="item.type==='Select'" v-model="formData[item.prop]" :placeholder="item.placeholder">
       <el-option v-for="item in item.options" :label="item.value" :key="item.value"  :value="item.value"></el-option>
     </el-select>
-      <!-- <slot v-if="item.type===Slot" :name="item.slotName"/> -->
+      <slot v-if="item.type==='Slot'" :name="item.slotName"/>
     </el-form-item>
     <el-form-item>
      <el-button v-for="item in formHandler" @click="item.handler && item.handler();log()" :key="item.key" :type="item.type">{{item.label}}</el-button>

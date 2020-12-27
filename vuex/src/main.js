@@ -8,7 +8,10 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 // import ol from 'openlayers'
 // Vue.prototype.$ol=ol;
+const eventBus=new Vue()
+Vue.prototype.eventBus=eventBus
 Vue.config.productionTip = false
+
 
 new Vue({
   router,

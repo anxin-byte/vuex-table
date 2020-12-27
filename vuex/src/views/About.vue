@@ -116,6 +116,10 @@ export default {
     },
          timing() {
           //  this.form_data 数据置空的同时，打印的数据也空了，涉及到深拷贝和浅拷贝问题，因为地址是一样的
+        //        this.$nextTick(() => {
+        // this.$refs.Vueform.resetFields();
+        // console.log(this.form_data);
+        //   })
               setTimeout(()=>{
                     this.$refs.Vueform.$refs.form1.resetFields();
                     console.log(this.form_data);
