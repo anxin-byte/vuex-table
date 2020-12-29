@@ -1,5 +1,5 @@
 <template>
-  <el-form :rules="rules"  ref="form1" :model="formData" label-width="120px">
+  <el-form :rules="rules"  ref="form1" :model="formData">
     <el-form-item v-for="item in formItem" :key="item.prop" :label="item.label" :prop="item.prop" :rules="item.rules">
       <template v-if="item.type==='Radio'">
           <div v-for="(v,index) in data" :key="index" >
@@ -15,7 +15,7 @@
       </template>
     </el-form-item>
      <el-form-item v-if="false">
-     <el-button v-for="item in formHandler" @click="item.handler && item.handler();log()" :key="item.key" :type="item.type">{{item.label}}</el-button>
+     <el-button v-for="item in formHandler" @click="item.handler && item.handler(val);log()" :key="item.key" :type="item.type">{{item.label}}</el-button>
     </el-form-item>
   </el-form>
 </template>
@@ -67,7 +67,6 @@ export default {
     formItem:{
       handler(newValue){
         this.initFormData()
-        // console.log(newValue);
       },
       immediate:true
     }

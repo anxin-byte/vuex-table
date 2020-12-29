@@ -30,7 +30,7 @@ export default {
             route:'',
             right:[]
           },
-      form_handler:[{label:"完成",key:"submit",type:"primary",handler:()=>this.submit()}],
+      form_handler:[{label:"完成",key:"submit",type:"primary",handler:(val)=>this.submit(val)}],
       };
     },
     components: {
@@ -63,7 +63,7 @@ export default {
       console.log(this.form_data);
       console.log(val);
       },
-      submit(){
+      submit(val){
         // console.log(this.$refs);
         const obj={
             route:'',
@@ -77,7 +77,7 @@ export default {
         // obj.right=JSON.parse(JSON.stringify(this.form_data.right)) 
         sessionStorage.setItem(this.form_data.route,JSON.stringify(this.form_data.right));
         //  console.log(this.form_data);
-         this.form_data={
+         this.form_data={           
             route:'',
             right:[]
           }
