@@ -1,0 +1,23 @@
+.cart {
+  height: 40%;
+  width: 100%;
+  padding-left: 20;
+  position: absolute;
+  /*background: #bbbbbb;
+  /* z-index: 100; */
+  color: #fff;
+  bottom: 0px;
+}
+.carts-item {
+  @include webkit(box-shadow, 0 0 18px rgba(0, 0, 0, 2));
+  @include webkit(box-sizing, border-box);
+  height: 150px;
+  width: 200px;
+  margin-left: 25%;
+  background: #fff;
+  border-radius: 24px;
+  -webkit-border-radius: 24px;
+  -moz-border-radius: 24px;
+  -ms-border-radius: 24px;
+  -o-border-radius: 24px;
+}

@@ -25,6 +25,7 @@
                 <el-menu-item index="1-2"><router-link to="/table">表格封装</router-link></el-menu-item>
                 <el-menu-item index="1-2"><router-link to="/add">新增页面</router-link></el-menu-item>
                 <el-menu-item index="1-2"><router-link to="/map">地图页面</router-link></el-menu-item>
+                <el-menu-item index="1-2"><router-link to="/index">index模块页面</router-link></el-menu-item>
             </el-submenu>
             <el-menu-item index="2">
               <i class="el-icon-menu"></i>
@@ -40,7 +41,10 @@
             </el-menu-item>
           </el-menu>
         </el-aside>
-        <el-main><router-view/></el-main>
+        <el-main>
+          <router-view>
+          </router-view>
+          </el-main>
       </el-container>
     </el-container>
    <dialog1 :flagvisible.sync="showflagvisible" :messages="messages"/>
