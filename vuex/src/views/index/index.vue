@@ -39,7 +39,7 @@ export default {
  computed: {
    show(){
      const router=this.$route
-     return router.name === "indexUser" ? true : false
+     return router.name === "index" ? false : true
      console.log(router);
    }
  },

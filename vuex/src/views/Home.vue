@@ -13,18 +13,19 @@
       <CitySelect ref="cityArea" :mapLocation="true" :cityAreaValue.sync="form.area" @callback="callbackComponent"/>
       </template> -->
     </vueform>
+    <city :cityArea.sync="form_data.area1"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import vueform from '@/components/vueform.vue'
-import Vueform from '../components/vueform.vue'
+import city from '../components/jiLianXuanZhe/index.vue'
 export default {
   name: 'Home',
   components: {
-    vueform
-    // Vueform
+    vueform,
+    city
   },
  data(){
    let validatePass=(rule,value,callback)=>{
@@ -66,7 +67,7 @@ export default {
      }
    ],
    form_handler:[{
-     label:"确定",key:"submit",type:"danger",handler:()=>this.submit()
+     label:"确定",key:"submit",type:"danger",handler:(val)=>this.submit(val)
    },{
      label:"重置",key:"reset",handler:()=>this.add()
    }],
@@ -90,7 +91,8 @@ export default {
      carnumber:'',
      status:'',
      address2:'',
-     area:''
+     area:'',
+     area1:''
    },
   //  id:'000'
  }
@@ -101,19 +103,20 @@ export default {
       //    参数二 传递的数据
   methods: {
     // 提交表单
-    submit(){
-      console.log(this.$refs);
+    submit(val){
+      console.log(val);
+      // console.log(this.$refs);
       this.$refs.VuForm.$refs.form1.validate((valid)=>{
        if(valid){
          console.log(valid);
-         console.log(this.id);
+        //  console.log(this.id);
          this.id?this.sort():this.add()
        }else{
          console.log('error submit1！！');
          return false
        }
       })
-      // console.log(this.form);
+      console.log(this.form_data);
     },
     add(){
        this.$refs.VuForm.$refs.form1.resetFields();

@@ -1,6 +1,25 @@
 <template>
 <div>
-  <VueTable  :config="table_config"/>
+  <VueTable  :config="table_config">
+    <!-- 插槽 -->
+    <!-- 禁启用 -->
+    <template v-slot:status="slotData">
+    <el-switch v-model="slotData.data.status" active-value="2" inactive-value="1" active-color="#13ce66" inactive-color="#ff4949"></el-switch>
+    </template>
+
+    <!-- 查看地图 -->
+     <template v-slot:see="slotData">
+     <el-button type="success" @click="seeMap(slotData.data)" size="mini">查看地图</el-button>
+     <el-button></el-button>
+    </template>
+
+    <!-- 操作 -->
+    <template v-slot:operation="slotData">
+     <el-button @click="edit(slotData.data.id)" type="primary">编辑</el-button>
+      <el-button @click="del(slotData.data.id)" type="danger">删除</el-button>
+     <el-button></el-button>
+    </template>
+  </VueTable>
 </div>
 </template>
 
@@ -31,7 +50,7 @@ export default {
         //  {label:'区域',prop:'address',type:"images"},
          {label:'区域',prop:'address',type:"function",callback:(row,prop)=>{ if(row[prop]){return row[prop]}else{console.log(row[prop])}}},
          {label:'可停放车辆',prop:'carsNumber'},
-         {label:'禁启用',prop:'status'},
+         {label:'禁启用',prop:'status',type:"slot"},
          {label:'操作'}
          ],
          checkbox:true,
@@ -45,6 +64,17 @@ export default {
     // this.table_data=JSON.parse(loadData().innerList)
     // this.table_data=loadData().innerList
     // console.log(this.table_data)
+  },
+  methods: {
+   edit(val){
+      console.log(val);
+   },
+   del(val){
+     console.log(val);
+   },
+    seeMap(val){
+      console.log(val);
+    }
   },
 components: {
   VueTable

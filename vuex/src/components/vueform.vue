@@ -12,7 +12,7 @@
       <slot v-if="item.type==='Slot'" :name="item.slotName"/>
     </el-form-item>
     <el-form-item>
-     <el-button v-for="item in formHandler" @click="item.handler && item.handler();log()" :key="item.key" :type="item.type">{{item.label}}</el-button>
+     <el-button v-for="item in formHandler" @click="item.handler && item.handler(formData);log()" :key="item.key" :type="item.type">{{item.label}}</el-button>
      <!-- <el-button @click="resetForm('ruleForm')">重置</el-button>
      <el-button type="danger" :loading="button_loading" @click="onSubmit(form)">立即创建</el-button> -->
     </el-form-item>

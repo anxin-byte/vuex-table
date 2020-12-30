@@ -39,6 +39,11 @@ const routes = [
         path: '/indexuser',
         name: 'indexUser',
         component: () => import('../views/user/index.vue'),
+      },
+      {
+        path: '/indexsafe',
+        name: 'indexsafe',
+        component: () => import('../views/safe/index.vue'),
       }
     ]
   }

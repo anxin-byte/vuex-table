@@ -11,6 +11,11 @@
        </template>
      </el-table-column>
     
+     <el-table-column v-else-if="item.type==='slot'" :key="item.prop"  :prop="item.prop" :label="item.label">
+       <template slot-scope="scope">
+        <slot :name="item.slotName" :data="scope.row"></slot>
+       </template>
+     </el-table-column>
     <!-- <el-table-column v-else-if="item.type==='images'" :key="item.prop"  :prop="item.prop" :label="item.label">
        <template slot-scope="scope">
         <el-input></el-input>
