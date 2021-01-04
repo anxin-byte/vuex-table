@@ -62,7 +62,7 @@ import Vueform from "@/components/vueform.vue"
       }
      }
       return {
-        dialogVisible: true,
+        dialogVisible: false,
         // logo_current:'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3232438348,3350389052&fm=26&gp=0.jpg',
         logo:[{img:'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3720844120,2936843332&fm=26&gp=0.jpg',name:1},
         {img:'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=119835866,2340977400&fm=26&gp=0.jpg',name:2},
