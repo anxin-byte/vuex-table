@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-  <el-table :data="table_data" border style="width:100%">
+  <el-table height="350px" v-loading="loading_table" :data="table_data" border style="width:100%">
      <el-table-column v-if="table_config.checkbox" type="selection" width="35"></el-table-column>
     
     <template  v-for="item in this.table_config.thead" >
@@ -10,7 +10,7 @@
         <span v-html="item.callback&&item.callback(scope.row,item.prop)"></span>
        </template>
      </el-table-column>
-    
+    <!-- 插槽 -->
      <el-table-column v-else-if="item.type==='slot'" :key="item.prop"  :prop="item.prop" :label="item.label">
        <template slot-scope="scope">
         <slot :name="item.slotName" :data="scope.row"></slot>
@@ -27,6 +27,24 @@
 
     </template>
   </el-table>
+  <el-row>
+    <el-col :span="4"><div class="left" style="min-height:30px"></div></el-col>
+    <el-col :span="16">
+      <div class="left" style="min-height:30px">
+          <el-pagination
+          v-if="table_config.pagination"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page="currentPage"
+          :page-sizes="[100, 200, 300, 400]"
+          :page-size="100"
+          layout="total, sizes, prev, pager, next, jumper"
+            :total="400">
+          </el-pagination>
+      </div>
+    </el-col>
+    <el-col :span="4"><div class="left" style="min-height:30px"></div></el-col>
+  </el-row>
   </div>
 </template>
 
@@ -48,10 +66,15 @@ export default {
    table_config:{
      thead:[],
      url:'',
-     checkbox:''
+     checkbox:'',
+     pagination:true,
+     data:{}
     //  aaa:'11'
    },
-   table_data:[]
+   table_data:[],
+   total:0,
+   currentPage:1,
+   loading_table:false
   }
   },
   beforeMount () {
@@ -70,6 +93,12 @@ export default {
     },
     getData(){
     this.table_data=loadData().innerList
+    },
+    handleSizeChange(val){
+      console.log(val);
+    },
+    handleCurrentChange(val){
+      console.log(val);
     }
   },
 watch: {

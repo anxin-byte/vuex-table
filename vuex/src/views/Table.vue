@@ -4,7 +4,7 @@
     <!-- 插槽 -->
     <!-- 禁启用 -->
     <template v-slot:status="slotData">
-    <el-switch v-model="slotData.data.status" active-value="2" inactive-value="1" active-color="#13ce66" inactive-color="#ff4949"></el-switch>
+    <el-switch @change="switchChange(slotData.data)" v-model="slotData.data.status" active-value="1" inactive-value="0" active-color="#13ce66" inactive-color="#ff4949"></el-switch>
     </template>
 
     <!-- 查看地图 -->
@@ -15,9 +15,9 @@
 
     <!-- 操作 -->
     <template v-slot:operation="slotData">
-     <el-button @click="edit(slotData.data.id)" type="primary">编辑</el-button>
-      <el-button @click="del(slotData.data.id)" type="danger">删除</el-button>
-     <el-button></el-button>
+     <el-button @click="edit(slotData.data)" type="primary">编辑</el-button>
+      <el-button @click="del(slotData.data)" type="danger">删除</el-button>
+     <!-- <el-button></el-button> -->
     </template>
   </VueTable>
 </div>
@@ -50,9 +50,10 @@ export default {
         //  {label:'区域',prop:'address',type:"images"},
          {label:'区域',prop:'address',type:"function",callback:(row,prop)=>{ if(row[prop]){return row[prop]}else{console.log(row[prop])}}},
          {label:'可停放车辆',prop:'carsNumber'},
-         {label:'禁启用',prop:'status',type:"slot"},
-         {label:'操作'}
+         {label:'禁启用',prop:'status',type:"slot",slotName:'status'},
+         {label:'操作',slotName:'operation',type:'slot'}
          ],
+        //  pagination:{},
          checkbox:true,
          url:'/api/data',
       //  aaa:'999'
@@ -73,6 +74,9 @@ export default {
      console.log(val);
    },
     seeMap(val){
+      console.log(val);
+    },
+    switchChange(val){
       console.log(val);
     }
   },

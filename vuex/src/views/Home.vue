@@ -9,6 +9,7 @@
     <button @click="sort">减</button>
     <button style="margin:22px 0px" @click="async">异步加一</button>
     <vueform ref="VuForm" :rules="rules" :formData="form_data" :formItem="form_item" :formHandler="form_handler">
+      <!-- form 插槽使用 -->
       <!-- <template v-slot:city>
       <CitySelect ref="cityArea" :mapLocation="true" :cityAreaValue.sync="form.area" @callback="callbackComponent"/>
       </template> -->
@@ -105,7 +106,7 @@ export default {
     // 提交表单
     submit(val){
       console.log(val);
-      // console.log(this.$refs);
+      console.log(this.$refs);
       this.$refs.VuForm.$refs.form1.validate((valid)=>{
        if(valid){
          console.log(valid);
